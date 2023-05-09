@@ -1,7 +1,7 @@
 export interface Pokemon {
     id: number;
     name: string;
-    weight : Number;
+    weight : number;
     height : number;
 
 }

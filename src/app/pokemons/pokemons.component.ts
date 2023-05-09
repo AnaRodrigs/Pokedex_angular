@@ -16,19 +16,20 @@ export class PokemonsComponent  implements OnInit{
   }
   ngOnInit(): void {
    this.loadPokemon();
+
   }
-    
+
     loadPokemon () {
       this.service.getPokemons(this.id).subscribe (
         {
           next : data => {
-            this.pokemon = data;
+             this.pokemon = data;
           }
         }
       );
     }
 
-    getImage(): string {
+    imagem(): string {
       return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${this.id}.png`;
     }
 
@@ -39,15 +40,15 @@ export class PokemonsComponent  implements OnInit{
       else{
         this.id = 1;
       }
-  
+
       this.loadPokemon();
     }
-    
- 
-   prev() 
+
+
+   prev()
   {
     if(this.id > 1){
-      this.id ++;
+      this.id --;
     }
     else{
       this.id = 1008;
@@ -55,7 +56,18 @@ export class PokemonsComponent  implements OnInit{
 
     this.loadPokemon();
   }
-   
+
+  getName() : string {
+    return this.pokemon.name;
   }
 
-  
+  getAltura() : number {
+    return this.pokemon.height;
+  }
+
+  getPeso() : number {
+    return this.pokemon.weight;
+  }
+
+  }
+

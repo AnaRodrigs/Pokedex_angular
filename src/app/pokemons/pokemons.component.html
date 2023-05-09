@@ -1,11 +1,11 @@
 
 <div class="container-lg ">
  <div class="display 4 ">
-    <h1> {{pokemon.name}}</h1>
-    <img width="300px" [src]="getImage()"  alt="">
+    <h1> {{pokemon.name | titlecase}}</h1>
+    <img width="300px" [src]="imagem()"  alt="">
 
-    <p> Sua altura é {{pokemon.height}}</p>  
-    <P> seu peso equivale a {{pokemon.weight}}</P> 
+    <p> Sua altura é {{getAltura()}}</p>
+    <P> seu peso equivale a {{getPeso()}}</P>
  </div>
  <button type="button "  (click)="prev()"class="btn btn-success " >Anterior</button>
 

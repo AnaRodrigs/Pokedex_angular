@@ -7,13 +7,13 @@ import { Pokemon } from './pokemon';
   providedIn: 'root'
 })
 export class PokemonService {
- 
+
   constructor(private http : HttpClient ){ }
 
 
 
   public getPokemons (id : number): Observable<Pokemon>{
-    return this.http.get<Pokemon>('https://pokeapi.co/api/v2/pokemon/${id}');
+    return this.http.get<Pokemon>(`https://pokeapi.co/api/v2/pokemon/${id}`);
   }
-  
+
 }
