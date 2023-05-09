@@ -9,6 +9,7 @@ import { PokemonService } from '../pokemon.service';
 })
 export class PokemonsComponent  implements OnInit{
   pokemon : Pokemon = {} as Pokemon ;
+  id: number = 1;
 
   constructor (private service: PokemonService) {
 
@@ -18,12 +19,43 @@ export class PokemonsComponent  implements OnInit{
   }
     
     loadPokemon () {
-      this.service.getPokemons().subscribe (
+      this.service.getPokemons(this.id).subscribe (
         {
           next : data => {
             this.pokemon = data;
           }
         }
-      )
+      );
     }
+
+    getImage(): string {
+      return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${this.id}.png`;
+    }
+
+    next(){
+      if(this.id < 1008){
+        this.id ++;
+      }
+      else{
+        this.id = 1;
+      }
+  
+      this.loadPokemon();
+    }
+    
+ 
+   prev() 
+  {
+    if(this.id > 1){
+      this.id ++;
+    }
+    else{
+      this.id = 1008;
+    }
+
+    this.loadPokemon();
   }
+   
+  }
+
+  
